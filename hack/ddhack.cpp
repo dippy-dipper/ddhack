@@ -62,6 +62,9 @@ int gIgnoreAspect = 0;
 int gGDI = 0;
 int gVsync = 0;
 int temp[640*480];
+// Screenshot stuff
+char scrshot_name[30];
+int scrshot = 1;
 
 #pragma data_seg ()
 
@@ -455,6 +458,64 @@ void updatescreen()
 	SwapBuffers(gWindowDC);
 }
 
+// Take a .tga (TARGA) format screenshot:
+// code sample taken from:
+// https://community.khronos.org/t/taking-screenshots-how-to/19154/6
+void TakeScreenshot()
+{
+	unsigned char *buffer;
+	int w = gRealScreenWidth;
+	int h = gRealScreenHeight;
+	int buf_size = 18 + (w * h * 3);
+	int i;
+	unsigned char temp;
+	FILE *out_file;
+
+	// name screenshot
+	sprintf( scrshot_name, "_screenshot%d.tga", scrshot );
+	scrshot ++;
+
+	// open file for output
+	if (!(out_file = fopen(scrshot_name, "wb")))
+	{
+	return;
+	}
+
+	// allocate mem to read from frame buf
+	if (!(buffer = (unsigned char *) calloc(1, buf_size)))
+	{
+	return;
+	}
+
+	// set header info
+	buffer[2] = 2; // uncompressed
+	buffer[12] = w & 255;
+	buffer[13] = w >> 8;
+	buffer[14] = h & 255;
+	buffer[15] = h >> 8;
+	buffer[16] = 24; // 24 bits per pix
+
+	// read frame buf
+	glPixelStorei(GL_PACK_ALIGNMENT, 1); // Change pixel storage mode to 1 (byte-alignment)
+	// Needed to fix issues with resolutions that are not dividable by 4. (slanted b&w image)
+	glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, buffer + 18);
+	glPixelStorei(GL_PACK_ALIGNMENT, 4); // Restore default pixel storage mode: 4 (word-alignment)
+
+	// RGB to BGR
+	for (i = 18; i < buf_size; i += 3)
+	{
+	temp = buffer[i];
+	buffer[i] = buffer[i + 2];
+	buffer[i + 2] = temp;
+	}
+
+	// write header + color buf to file
+	fwrite(buffer, sizeof(unsigned char), buf_size, out_file);
+
+	// cleanup
+	fclose(out_file);
+	free(buffer);
+}
 
 LRESULT CALLBACK newwinproc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {	
@@ -471,6 +532,16 @@ LRESULT CALLBACK newwinproc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 		logf("winproc: too long since last update");
 		updatescreen();
+	}
+	
+	// PrtScr button takes a .tga screenshot:
+	if(GetAsyncKeyState(VK_SNAPSHOT)){
+		// loop to wait for key release...
+		while (GetAsyncKeyState(VK_SNAPSHOT))
+		{
+			Sleep(10);
+		}
+	TakeScreenshot();
 	}
 
 	//SetCapture(hWnd); // causes horrible input lag, so let's not use it
