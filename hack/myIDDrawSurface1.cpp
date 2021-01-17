@@ -485,7 +485,18 @@ HRESULT  __stdcall myIDDrawSurface1::Unlock(LPVOID a)
 	// otherwise wc2 misses some screens
 	// (no retrace, flip, or even message pump)
 	if (this == gPrimarySurface)
-		updatescreen();
+	{
+		// SPWaW mouse cursor fix
+		int bSPWaWmouse = GetPrivateProfileInt("Rendering", "spwaw_mouse", 0, ".\\ddhack.ini");
+		if(bSPWaWmouse)
+		{
+			glFlush();
+		}
+		else
+		{
+			updatescreen();
+		}
+	}
 
 	return NOERROR;
 }
