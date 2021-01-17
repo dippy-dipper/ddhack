@@ -870,14 +870,14 @@ void InitInstance(HANDLE hModule)
 {
 	logf("InitInstance.");
 	// Our extremely simple config file handling..
-	gSmooth=INI_READ_INT("Rendering","bilinear_filter",0);
+	gSmooth=INI_READ_INT("Rendering","bilinear_filter",1); // ON by default
 	gHalfAndHalf=INI_READ_INT("Rendering","halfnhalf",0);
 	gShowLogo=INI_READ_INT("Rendering","show_logo",0);
 	gOldLCD=INI_READ_INT("Rendering","old_lcd_level",0);
 	gScanDouble=INI_READ_INT("Rendering","wc3scandouble",0);
 	gBlurWc3Video=INI_READ_INT("Rendering","wc3blurvideo",0);
 	gWc3SmallVid=INI_READ_INT("Rendering","wc3smallvid",0);
-	gAltWinPos=INI_READ_INT("Rendering","altwinpos",0);
+	gAltWinPos=INI_READ_INT("Rendering","altwinpos",1); // ON by default
 	gIgnoreAspect=INI_READ_INT("Rendering","ignore_aspect_ratio",0);
 	gVsync=INI_READ_INT("Rendering","vsync",0);
 
