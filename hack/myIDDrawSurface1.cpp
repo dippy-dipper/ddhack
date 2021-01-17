@@ -487,7 +487,7 @@ HRESULT  __stdcall myIDDrawSurface1::Unlock(LPVOID a)
 	if (this == gPrimarySurface)
 	{
 		// SPWaW mouse cursor fix
-		int bSPWaWmouse = GetPrivateProfileInt("Rendering", "spwaw_mouse", 0, ".\\ddhack.ini");
+		int bSPWaWmouse = GetPrivateProfileInt("Rendering", "spwaw_mouse", 1, ".\\ddhack.ini");
 		if(bSPWaWmouse)
 		{
 			glFlush();
