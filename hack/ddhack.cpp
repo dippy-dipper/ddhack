@@ -176,8 +176,8 @@ void updatescreen()
 
 	// texture size stuff probably should be global
 	// and calculated once per mode init..
-	int tex_w = 512;
-	int tex_h = 256;	
+	int tex_w = 400; // Old 512. Fix for SPWaW rendering.
+	int tex_h = 300; // Old 256. Fix for SPWaW rendering.
 	int i, j;
 
 	if (gScreenWidth > 320 || gHalfAndHalf)
