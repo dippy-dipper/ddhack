@@ -144,7 +144,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="ddraw.lib dxguid.lib"
-				OutputFile="E:\Program Files (x86)\wing commander\wc3\ddraw.dll"
+				OutputFile=".\Release\ddraw.dll"
 				LinkIncremental="1"
 				ModuleDefinitionFile="ddwrapper.def"
 				GenerateDebugInformation="true"
