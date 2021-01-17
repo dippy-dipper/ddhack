@@ -49,12 +49,12 @@ WNDPROC origfunc = NULL;
 HDC gWindowDC;
 int gLastUpdate = -1;
 int gAllowResize = 0;
-int gSmooth = 0;
+int gSmooth = 1; // ON by default
 int gShowLogo = 0;
 int gHalfAndHalf = 0;
 int gOldLCD = 0;
 int gScanDouble = 0;
-int gAltWinPos = 0;
+int gAltWinPos = 1; // ON by default
 int gBlurWc3Video = 0;
 int gWc3SmallVid = 0;
 int gIgnoreAspect = 0;
@@ -792,7 +792,7 @@ void InitInstance(HANDLE hModule)
 	logf("InitInstance.");
 	// Our extremely simple config file handling..
 	gSmooth=INI_READ_INT("Rendering","bilinear_filter",0);
-	gSmooth=gHalfAndHalf=INI_READ_INT("Rendering","halfnhalf",0);
+	gHalfAndHalf=INI_READ_INT("Rendering","halfnhalf",0);
 	gShowLogo=INI_READ_INT("Rendering","show_logo",0);
 	gOldLCD=INI_READ_INT("Rendering","old_lcd_level",0);
 	gScanDouble=INI_READ_INT("Rendering","wc3scandouble",0);
