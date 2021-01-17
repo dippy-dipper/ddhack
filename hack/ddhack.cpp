@@ -32,6 +32,7 @@
 #include "logo.h"
 
 //#define LOG_DLL_ATTACH
+#define IDT_TIMER1 1
 
 // global variables
 #pragma data_seg (".ddraw_shared")
@@ -526,6 +527,13 @@ LRESULT CALLBACK newwinproc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			return 0;		
 		}
 		break;
+	// Handle timer message so it does not overwrite game timer. (Fixes SPWaW timer issues.)
+	case WM_TIMER:
+		if (uMsg==WM_TIMER && wParam==IDT_TIMER1)
+		{
+			return 0;
+		}
+		break;
 	}
 
 	// Pass control to the application..	
@@ -624,7 +632,7 @@ void init_gl()
 	ClipCursor(&r);
 
 	// Create a timer so we'll get some events all the time
-	SetTimer(gHwnd, 1, 10, NULL);
+	SetTimer(gHwnd, IDT_TIMER1, 10, NULL); // Use a named timer so we can handle its message.
 }
 
 BOOL APIENTRY DllMain( HANDLE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
