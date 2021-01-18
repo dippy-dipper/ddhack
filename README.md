@@ -1,4 +1,4 @@
-# A fork of ddhack with added support for the game Steel Panthers World at War (Matrix Games, 2001)
+## A fork of ddhack that supports the game: Steel Panthers World at War *(Matrix Games, 2000)*
 
 Changes:
 - Changed texture size to fix display issues in SPWaW.
