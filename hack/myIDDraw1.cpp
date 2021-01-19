@@ -1,5 +1,7 @@
 #include "StdAfx.h"
-#include <varargs.h>
+#include <stdarg.h>
+
+void logf(const char *msg, ...);
 
 myIDDraw1::myIDDraw1()
 {
@@ -15,7 +17,7 @@ myIDDraw1::~myIDDraw1(void)
 
 HRESULT __stdcall myIDDraw1::QueryInterface (REFIID a, LPVOID FAR * b)
 {
-	char *iid = "?";
+	const char *iid = "?";
 	if (a == IID_IDirectDraw) iid = "IID_IDirectDraw";
 	if (a == IID_IDirectDraw2) iid = "IID_IDirectDraw2";
 //	if (a == IID_IDirectDraw4) iid = "IID_IDirectDraw4";
