@@ -10,6 +10,6 @@ Changes:
 Made the code MinGW compatible:
 - Changed *varargs.h* to *stdarg.h*
 - Changed some *char* to *const char* (ISO C++ standard).
-- Removed some (unnessesary?) definitions that caused linker errors: AcquireDDThreadLock, CompleteCreateSysmemSurface, D3DParseUnknownCommand, DDInternalLock, DDInternalUnlock, ReleaseDDThreadLock.
+- Removed some (unnecessary?) definitions that caused linker errors: AcquireDDThreadLock, CompleteCreateSysmemSurface, D3DParseUnknownCommand, DDInternalLock, DDInternalUnlock, ReleaseDDThreadLock.
 - Added make.cmd for mingw compiling.
 - logger: fixed log path.
