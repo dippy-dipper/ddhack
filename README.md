@@ -6,3 +6,10 @@ Changes:
 - Prevent game timer from being overwriten by the wrappers timer. (Fix SPWaW animation speed)
 - Added ability to take .TGA format screenshots.
 - Bilinear and altWinPos are on by default.
+
+Made the code MinGW compatible:
+- Changed *varargs.h* to *stdarg.h*
+- Changed some *char* to *const char* (ISO C++ standard).
+- Removed some (unnessesary?) definitions that caused linker errors: AcquireDDThreadLock, CompleteCreateSysmemSurface, D3DParseUnknownCommand, DDInternalLock, DDInternalUnlock, ReleaseDDThreadLock.
+- Added make.cmd for mingw compiling.
+- logger: fixed log path.
