@@ -1,8 +1,8 @@
 LIBRARY	"ddraw"
 
 EXPORTS
-        AcquireDDThreadLock @1
-		D3DParseUnknownCommand @4
+        
+		
 	    DirectDrawCreate @9
         DirectDrawCreateClipper @10
         DirectDrawCreateEx @11
@@ -12,4 +12,4 @@ EXPORTS
 		DirectDrawEnumerateW @15
 		DllCanUnloadNow PRIVATE
 	    DllGetClassObject PRIVATE
-		ReleaseDDThreadLock @22
+		
