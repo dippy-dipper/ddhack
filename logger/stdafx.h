@@ -12,4 +12,4 @@
 #include "myIDDraw.h"
 #include "ddwrapper.h"
 
-void logf(void * thisptr, char *msg, ...);
+void logf(void * thisptr, const char *msg, ...);
