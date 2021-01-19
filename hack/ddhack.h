@@ -19,7 +19,7 @@ extern int gGDI;
 extern unsigned char logo[];
 #pragma data_seg ()
 
-void logf(char *msg, ...);
+void logf(const char *msg, ...);
 void updatescreen();
 void init_gl();
 void getgdibitmap();
@@ -33,9 +33,9 @@ HRESULT WINAPI DirectDrawEnumerateW(LPDDENUMCALLBACKW lpCallback, LPVOID lpConte
 HRESULT WINAPI DirectDrawEnumerateA(LPDDENUMCALLBACKA lpCallback, LPVOID lpContext);
 HRESULT WINAPI DirectDrawEnumerateExW(LPDDENUMCALLBACKEXW lpCallback, LPVOID lpContext, DWORD dwFlags);
 HRESULT WINAPI DirectDrawEnumerateExA(LPDDENUMCALLBACKEXA lpCallback, LPVOID lpContext, DWORD dwFlags);
-VOID WINAPI AcquireDDThreadLock(void);
-VOID WINAPI ReleaseDDThreadLock(void);
-DWORD WINAPI D3DParseUnknownCommand(LPVOID lpCmd, LPVOID *lpRetCmd);
+//VOID WINAPI AcquireDDThreadLock(void);
+//VOID WINAPI ReleaseDDThreadLock(void);
+//DWORD WINAPI D3DParseUnknownCommand(LPVOID lpCmd, LPVOID *lpRetCmd);
 HRESULT WINAPI DllCanUnloadNow(void);
 HRESULT WINAPI DllGetClassObject (const CLSID &rclsid, const IID &riid, void **ppv);
 
