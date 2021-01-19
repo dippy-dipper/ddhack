@@ -1,7 +1,7 @@
 #include "StdAfx.h"
-#include <varargs.h>
+#include <stdarg.h>
 
-
+void logf(void * thisptr, const char *msg, ...);
 
 myIDDrawSurface2::myIDDrawSurface2(LPDIRECTDRAWSURFACE2 pOriginal)
 {
