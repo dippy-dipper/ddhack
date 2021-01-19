@@ -1,6 +1,7 @@
 #include "StdAfx.h"
-#include <varargs.h>
+#include <stdarg.h>
 
+void logf(const char *msg, ...);
 
 myIDDrawSurface1::myIDDrawSurface1(LPDDSURFACEDESC a)
 {
@@ -402,7 +403,7 @@ HRESULT  __stdcall myIDDrawSurface1::IsLost()
 
 HRESULT  __stdcall myIDDrawSurface1::Lock(LPRECT a,LPDDSURFACEDESC b,DWORD aFlags,HANDLE d)
 {
-	char *extra = "";
+	const char *extra = "";
 	if (this == gPrimarySurface)
 		extra = " primary";
 	if (this == gBackBuffer)
