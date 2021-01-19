@@ -1,7 +1,7 @@
 #include "StdAfx.h"
-#include <varargs.h>
+#include <stdarg.h>
 
-void logf(char *msg, ...);
+void logf(const char *msg, ...);
 void updatescreen();
 
 myIDDrawPalette::myIDDrawPalette(DWORD aFlags, LPPALETTEENTRY aPalette)
