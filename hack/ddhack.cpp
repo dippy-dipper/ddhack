@@ -28,7 +28,7 @@
  * re-worked so much that there's fairly little left of the original.
  */
 #include "stdafx.h"
-#include <varargs.h>
+#include <stdarg.h>
 #include "logo.h"
 
 //#define LOG_DLL_ATTACH
@@ -68,7 +68,7 @@ int scrshot = 1;
 
 #pragma data_seg ()
 
-void logf(char *msg, ...)
+void logf(const char *msg, ...)
 {
 #ifdef _DEBUG
 	va_list argp;
@@ -826,7 +826,7 @@ HRESULT WINAPI DirectDrawEnumerateExA(LPDDENUMCALLBACKEXA lpCallback, LPVOID lpC
 	return (DDERR_UNSUPPORTED);
 }
 
-
+/*
 VOID WINAPI AcquireDDThreadLock()
 {
 	logf("Exported function AcquireDDThreadLock");
@@ -846,7 +846,7 @@ DWORD WINAPI D3DParseUnknownCommand(LPVOID lpCmd, LPVOID *lpRetCmd)
 	
 	return(0);
 }
-
+*/
 
 HRESULT WINAPI DllCanUnloadNow(void)
 {
