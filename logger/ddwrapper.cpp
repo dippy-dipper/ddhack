@@ -28,7 +28,7 @@
  * re-worked so much that there's fairly little left of the original.
  */
 #include "stdafx.h"
-#include <varargs.h>
+#include <stdarg.h>
 
 //#define LOG_DLL_ATTACH
 
@@ -38,10 +38,10 @@ HINSTANCE           gl_hOriginalDll;
 HINSTANCE           gl_hThisInstance;
 #pragma data_seg ()
 
-void logf(void * thisptr, char *msg, ...)
+void logf(void * thisptr, const char *msg, ...)
 {	
 	va_list argp;
-	FILE * f = fopen("\\ddraw.log","a");	
+	FILE * f = fopen("ddraw-logger.log","a");	
 	static int t = -1;
 	if (t == -1)
 		t = GetTickCount();
